@@ -24,6 +24,8 @@
        Name			Date			Modification
 	------------------------------------------------------------------------------------
 	Nicholas Kizer	3/17/2017		Defined placement for STATUS info.
+			3/23/2017		Defined if statements to replace the status 
+							text with images.
  */
 /*jshint
          asi:true,
