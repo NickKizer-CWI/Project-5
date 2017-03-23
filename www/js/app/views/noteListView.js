@@ -214,6 +214,17 @@ define( [ "yasmf", "app/models/noteStorageSingleton", "text!html/noteListView.ht
             e.className = "ui-list-item";
             e.setAttribute( "data-uid", notes[ note ].uid );
             e.id = "note_item_" + notes[ note ].uid;
+			
+			// Inserts images in place of text to display status on list of notes
+			var i = "";
+			if (notes[ note ].status == "archive") 
+			{
+				i = "<img src='images/fileCab.png' width='20px' height='20px' alt='archive'>";
+			}
+			if (notes[ note ].status == "followup") 
+			{
+				i = "<img src='images/pin.png' width='20px' height='20px' alt='followup'>";
+			}
             // render the note item template
             e.innerHTML = _y.template( noteListItemHTML, {
               "UID": notes[ note ].uid,
@@ -222,7 +233,7 @@ define( [ "yasmf", "app/models/noteStorageSingleton", "text!html/noteListView.ht
               "REPRESENTATION": notes[ note ].representation,
               "MODIFIED": _y.D( notes[ note ].modifiedDate, "D" ),
               "INFO": "" + _y.N( notes[ note ].formattedUnitValue ),
-			  "STATUS": notes[ note ].status
+			  "STATUS": i
             } );
             // attach any event handlers
             var contentsElement = e.querySelector( ".ui-list-item-contents" ),
